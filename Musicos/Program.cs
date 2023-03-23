@@ -1,4 +1,4 @@
-﻿class Musico
+﻿abstract class Musico
 {
     
     public string nombre {get; set;}
@@ -8,7 +8,7 @@
         nombre = Nombre;
     }
     public void Saluda(){Console.WriteLine($"Saludos, soy {nombre}");}
-    public virtual void Tocar(){Console.WriteLine($"{nombre} está tocando un instrumento");}
+    public /*virtual*/abstract void Tocar();//{Console.WriteLine($"{nombre} está tocando un instrumento");}
 }
 class Guitarrista
     :Musico
@@ -36,11 +36,11 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        Musico m1 = new Musico("Alexis");
+        //Musico m1 = new Musico("Alexis");
         Bajista b1 = new Bajista("Miguel Angel","Bajo amarillo");
         Guitarrista g1 = new Guitarrista("Black A","Guitarron");
         List<Musico> grupo = new List<Musico>();
-        grupo.Add(b1); grupo.Add(m1); grupo.Add(g1);
+        grupo.Add(b1); grupo.Add(g1); //grupo.Add(m1);
         foreach(Musico m in grupo)
         {
             m.Tocar();
