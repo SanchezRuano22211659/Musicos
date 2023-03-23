@@ -7,7 +7,8 @@
     {
         nombre = Nombre;
     }
-    public void Saluda(){Console.WriteLine($"Saludos, soy {nombre}");}
+    public string GetSaluda(){return "Hola soy " + nombre;}
+    public abstract void Saluda();
     public /*virtual*/abstract void Tocar();//{Console.WriteLine($"{nombre} está tocando un instrumento");}
 }
 class Guitarrista
@@ -19,6 +20,7 @@ class Guitarrista
     {
         guitarra = Guitarra;
     }
+    public override void Saluda(){Console.WriteLine($"{base.GetSaluda()} y soy guitarrista");}
     public override void Tocar(){Console.WriteLine($"{nombre} esta tocando usando {guitarra}");}
 }
 class Bajista
@@ -30,9 +32,10 @@ class Bajista
     {
         bajo = Bajo;
     }
+    public override void Saluda(){Console.WriteLine($"{base.GetSaluda()} y soy baterista");}
     public override void Tocar(){Console.WriteLine($"{nombre} esta tocando usando {bajo}");}
 }
-internal class Program
+internal class Program 
 {
     private static void Main(string[] args)
     {
@@ -44,6 +47,10 @@ internal class Program
         foreach(Musico m in grupo)
         {
             m.Tocar();
+        }
+        foreach(Musico m in grupo)
+        {
+            m.Saluda();
         }
     }
 }
